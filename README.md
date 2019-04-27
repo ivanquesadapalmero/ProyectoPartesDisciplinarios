@@ -6,6 +6,4 @@
 ### Autor: Iván Quesada Palmero.
 
 
-#### Página de login(index.php)
 
-[Texto alternativo](/capturas/login.png)
