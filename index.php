@@ -20,7 +20,6 @@
       $error ="";
   if($_SERVER["REQUEST_METHOD"] == "POST") {
 
-
      $myusername = mysqli_real_escape_string($db,$_POST['usuario']);
      $mypassword = mysqli_real_escape_string($db,$_POST['contraseña']); 
      
