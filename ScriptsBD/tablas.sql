@@ -16,7 +16,7 @@ alum_grupo varchar(10) not null
 
 
 --Creación de tabla Profesores
-Create table profesors(
+Create table profesores(
 prof_id int(4) not null primary key,
 prof_nombre varchar(50) not null,
 prof_apellidos varchar(100) not null,
