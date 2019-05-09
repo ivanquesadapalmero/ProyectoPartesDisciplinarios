@@ -1,1 +1,3 @@
-INSERT INTO credenciales VALUES(1, 'usuario',')
+USE gestiondepartes;
+
+INSERT INTO credenciales VALUES(1, 'usuario','usuario');
