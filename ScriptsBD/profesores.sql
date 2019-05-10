@@ -1,3 +1,5 @@
+USE gestiondepartes;
+
 INSERT INTO profesores VALUES(1,'José Antonio','Aguilar Curado','-');
 INSERT INTO profesores VALUES(2,'Míriam','Alcantarilla Rodríguez','-');
 INSERT INTO profesores VALUES(3,'Luis','Angulo Jiménez','2º AFI');
