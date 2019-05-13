@@ -34,7 +34,7 @@
         //session_register("myusername");
         $_SESSION['login_user'] = $myusername;
         
-        header("location: pruebainicio.php");
+        header("location: inicio.php");
         $error = "";
      }else {
         $error = "Usuario o contraseña incorrecto";
