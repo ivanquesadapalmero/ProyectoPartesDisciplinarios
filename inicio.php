@@ -23,6 +23,7 @@
 </head>
 <body>
 <?php 
+
 	include('utilidades/session.php'); 
 ?>
 
