@@ -23,7 +23,9 @@
 </head>
 
 <body>
-<?php include('utilidades/session.php'); ?>
+<?php 
+	include('utilidades/session.php'); 
+?>
 	<!-- WRAPPER -->
 	<div id="wrapper">
 		<!-- NAVBAR -->
