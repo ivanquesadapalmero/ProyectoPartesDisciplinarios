@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>Dashboard | Klorofil - Free Bootstrap Dashboard Template</title>
+	<title>DisciPart-Inicio</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="vendor/chartist/css/chartist-custom.css">
 	<!-- MAIN CSS -->
 	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/estilos.css">
 	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
 	<link rel="stylesheet" href="css/demo.css">
 	<!-- GOOGLE FONTS -->
@@ -66,23 +67,8 @@
 				<nav>
 					<ul class="nav">
 						<li><a href="inicio.php" class="active"><i class="lnr lnr-home"></i> <span>Inicio</span></a></li>
-						<li><a href="miTutoria.php" class=""><i class="lnr lnr-code"></i> <span>Mi Tutoria</span></a></li>
+						<li><a href="tutoria.php" class=""><i class="lnr lnr-code"></i> <span>Mi Tutoria</span></a></li>
 						<li><a href="charts.html" class=""><i class="lnr lnr-chart-bars"></i> <span>Charts</span></a></li>
-						<li><a href="panels.html" class=""><i class="lnr lnr-cog"></i> <span>Panels</span></a></li>
-						<li><a href="notifications.html" class=""><i class="lnr lnr-alarm"></i> <span>Notifications</span></a></li>
-						<li>
-							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>Pages</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-							<div id="subPages" class="collapse ">
-								<ul class="nav">
-									<li><a href="page-profile.html" class="">Profile</a></li>
-									<li><a href="page-login.html" class="">Login</a></li>
-									<li><a href="page-lockscreen.html" class="">Lockscreen</a></li>
-								</ul>
-							</div>
-						</li>
-						<li><a href="tables.html" class=""><i class="lnr lnr-dice"></i> <span>Tables</span></a></li>
-						<li><a href="typography.html" class=""><i class="lnr lnr-text-format"></i> <span>Typography</span></a></li>
-						<li><a href="icons.html" class=""><i class="lnr lnr-linearicons"></i> <span>Icons</span></a></li>
 					</ul>
 				</nav>
 			</div>
@@ -93,366 +79,89 @@
 			<!-- MAIN CONTENT -->
 			<div class="main-content">
 				<div class="container-fluid">
-					<!-- OVERVIEW -->
-					<div class="panel panel-headline">
-						<div class="panel-heading">
-							<h3 class="panel-title">Weekly Overview</h3>
-							<p class="panel-subtitle">Period: Oct 14, 2016 - Oct 21, 2016</p>
-						</div>
-						<div class="panel-body">
-							<div class="row">
-								<div class="col-md-3">
-									<div class="metric">
-										<span class="icon"><i class="fa fa-download"></i></span>
-										<p>
-											<span class="number">1,252</span>
-											<span class="title">Downloads</span>
-										</p>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="metric">
-										<span class="icon"><i class="fa fa-shopping-bag"></i></span>
-										<p>
-											<span class="number">203</span>
-											<span class="title">Sales</span>
-										</p>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="metric">
-										<span class="icon"><i class="fa fa-eye"></i></span>
-										<p>
-											<span class="number">274,678</span>
-											<span class="title">Visits</span>
-										</p>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="metric">
-										<span class="icon"><i class="fa fa-bar-chart"></i></span>
-										<p>
-											<span class="number">35%</span>
-											<span class="title">Conversions</span>
-										</p>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-9">
-									<div id="headline-chart" class="ct-chart"></div>
-								</div>
-								<div class="col-md-3">
-									<div class="weekly-summary text-right">
-										<span class="number">2,315</span> <span class="percentage"><i class="fa fa-caret-up text-success"></i> 12%</span>
-										<span class="info-label">Total Sales</span>
-									</div>
-									<div class="weekly-summary text-right">
-										<span class="number">$5,758</span> <span class="percentage"><i class="fa fa-caret-up text-success"></i> 23%</span>
-										<span class="info-label">Monthly Income</span>
-									</div>
-									<div class="weekly-summary text-right">
-										<span class="number">$65,938</span> <span class="percentage"><i class="fa fa-caret-down text-danger"></i> 8%</span>
-										<span class="info-label">Total Income</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- END OVERVIEW -->
+					<h3 class="page-title">Inicio-Registrar un parte</h3>
 					<div class="row">
-						<div class="col-md-6">
-							<!-- RECENT PURCHASES -->
-							<div class="panel">
-								<div class="panel-heading">
-									<h3 class="panel-title">Recent Purchases</h3>
-									<div class="right">
-										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
-										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
-									</div>
+						<div class="col-md-10">
+						<form class="formulario">
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="curso">Curso</label>
+									<select id="curso" class="form-control">
+										<option selected></option>
+										<?php
+										$sql = "SELECT DISTINCT alum_grupo FROM alumnos";
+                                        
+                                        $res = mysqli_query($db, $sql);
+                                        
+                                        while ($row = mysqli_fetch_array($res)) { 
+											print '<option>'.$row['alum_grupo'].'</option>';
+										}
+
+										?>
+										<!-- rellenar con cursos de la base de datos !-->
+									</select>
 								</div>
-								<div class="panel-body no-padding">
-									<table class="table table-striped">
-										<thead>
-											<tr>
-												<th>Order No.</th>
-												<th>Name</th>
-												<th>Amount</th>
-												<th>Date &amp; Time</th>
-												<th>Status</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td><a href="#">763648</a></td>
-												<td>Steve</td>
-												<td>$122</td>
-												<td>Oct 21, 2016</td>
-												<td><span class="label label-success">COMPLETED</span></td>
-											</tr>
-											<tr>
-												<td><a href="#">763649</a></td>
-												<td>Amber</td>
-												<td>$62</td>
-												<td>Oct 21, 2016</td>
-												<td><span class="label label-warning">PENDING</span></td>
-											</tr>
-											<tr>
-												<td><a href="#">763650</a></td>
-												<td>Michael</td>
-												<td>$34</td>
-												<td>Oct 18, 2016</td>
-												<td><span class="label label-danger">FAILED</span></td>
-											</tr>
-											<tr>
-												<td><a href="#">763651</a></td>
-												<td>Roger</td>
-												<td>$186</td>
-												<td>Oct 17, 2016</td>
-												<td><span class="label label-success">SUCCESS</span></td>
-											</tr>
-											<tr>
-												<td><a href="#">763652</a></td>
-												<td>Smith</td>
-												<td>$362</td>
-												<td>Oct 16, 2016</td>
-												<td><span class="label label-success">SUCCESS</span></td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-								<div class="panel-footer">
-									<div class="row">
-										<div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i> Last 24 hours</span></div>
-										<div class="col-md-6 text-right"><a href="#" class="btn btn-primary">View All Purchases</a></div>
-									</div>
+								<div class="form-group col-md-6">
+									<label for="curso">Alumno</label>
+									<select id="curso" class="form-control">
+										<option selected></option>
+										<!-- rellenar con cursos de la base de datos !-->
+									</select>
 								</div>
 							</div>
-							<!-- END RECENT PURCHASES -->
-						</div>
-						<div class="col-md-6">
-							<!-- MULTI CHARTS -->
-							<div class="panel">
-								<div class="panel-heading">
-									<h3 class="panel-title">Projection vs. Realization</h3>
-									<div class="right">
-										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
-										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
-									</div>
+							<div class="form-row">
+								<div class="form-group col-md-12">
+									<label for="exampleFormControlTextarea1">Motivo u Obsevaciones</label>
+									<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+								</div>	
+							</div>
+
+							<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="inputAddress2">Address 2</label>
+								<input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+							</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group col-md-6">
+								<label for="inputCity">City</label>
+								<input type="text" class="form-control" id="inputCity">
 								</div>
-								<div class="panel-body">
-									<div id="visits-trends-chart" class="ct-chart"></div>
+								<div class="form-group col-md-4">
+								<label for="inputState">State</label>
+								<select id="inputState" class="form-control">
+									<option selected>Choose...</option>
+									<option>...</option>
+								</select>
+								</div>
+								<div class="form-group col-md-2">
+								<label for="inputZip">Zip</label>
+								<input type="text" class="form-control" id="inputZip">
 								</div>
 							</div>
-							<!-- END MULTI CHARTS -->
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-7">
-							<!-- TODO LIST -->
-							<div class="panel">
-								<div class="panel-heading">
-									<h3 class="panel-title">To-Do List</h3>
-									<div class="right">
-										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
-										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
-									</div>
-								</div>
-								<div class="panel-body">
-									<ul class="list-unstyled todo-list">
-										<li>
-											<label class="control-inline fancy-checkbox">
-												<input type="checkbox"><span></span>
-											</label>
-											<p>
-												<span class="title">Restart Server</span>
-												<span class="short-description">Dynamically integrate client-centric technologies without cooperative resources.</span>
-												<span class="date">Oct 9, 2016</span>
-											</p>
-											<div class="controls">
-												<a href="#"><i class="icon-software icon-software-pencil"></i></a> <a href="#"><i class="icon-arrows icon-arrows-circle-remove"></i></a>
-											</div>
-										</li>
-										<li>
-											<label class="control-inline fancy-checkbox">
-												<input type="checkbox"><span></span>
-											</label>
-											<p>
-												<span class="title">Retest Upload Scenario</span>
-												<span class="short-description">Compellingly implement clicks-and-mortar relationships without highly efficient metrics.</span>
-												<span class="date">Oct 23, 2016</span>
-											</p>
-											<div class="controls">
-												<a href="#"><i class="icon-software icon-software-pencil"></i></a> <a href="#"><i class="icon-arrows icon-arrows-circle-remove"></i></a>
-											</div>
-										</li>
-										<li>
-											<label class="control-inline fancy-checkbox">
-												<input type="checkbox"><span></span>
-											</label>
-											<p>
-												<strong>Functional Spec Meeting</strong>
-												<span class="short-description">Monotonectally formulate client-focused core competencies after parallel web-readiness.</span>
-												<span class="date">Oct 11, 2016</span>
-											</p>
-											<div class="controls">
-												<a href="#"><i class="icon-software icon-software-pencil"></i></a> <a href="#"><i class="icon-arrows icon-arrows-circle-remove"></i></a>
-											</div>
-										</li>
-									</ul>
+							<div class="form-group">
+								<div class="form-check">
+								<input class="form-check-input" type="checkbox" id="gridCheck">
+								<label class="form-check-label" for="gridCheck">
+									Check me out
+								</label>
 								</div>
 							</div>
-							<!-- END TODO LIST -->
-						</div>
-						<div class="col-md-5">
-							<!-- TIMELINE -->
-							<div class="panel panel-scrolling">
-								<div class="panel-heading">
-									<h3 class="panel-title">Recent User Activity</h3>
-									<div class="right">
-										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
-										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
-									</div>
-								</div>
-								<div class="panel-body">
-									<ul class="list-unstyled activity-list">
-										<li>
-											<img src="assets/img/user1.png" alt="Avatar" class="img-circle pull-left avatar">
-											<p><a href="#">Michael</a> has achieved 80% of his completed tasks <span class="timestamp">20 minutes ago</span></p>
-										</li>
-										<li>
-											<img src="assets/img/user2.png" alt="Avatar" class="img-circle pull-left avatar">
-											<p><a href="#">Daniel</a> has been added as a team member to project <a href="#">System Update</a> <span class="timestamp">Yesterday</span></p>
-										</li>
-										<li>
-											<img src="assets/img/user3.png" alt="Avatar" class="img-circle pull-left avatar">
-											<p><a href="#">Martha</a> created a new heatmap view <a href="#">Landing Page</a> <span class="timestamp">2 days ago</span></p>
-										</li>
-										<li>
-											<img src="assets/img/user4.png" alt="Avatar" class="img-circle pull-left avatar">
-											<p><a href="#">Jane</a> has completed all of the tasks <span class="timestamp">2 days ago</span></p>
-										</li>
-										<li>
-											<img src="assets/img/user5.png" alt="Avatar" class="img-circle pull-left avatar">
-											<p><a href="#">Jason</a> started a discussion about <a href="#">Weekly Meeting</a> <span class="timestamp">3 days ago</span></p>
-										</li>
-									</ul>
-									<button type="button" class="btn btn-primary btn-bottom center-block">Load More</button>
-								</div>
-							</div>
-							<!-- END TIMELINE -->
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-4">
-							<!-- TASKS -->
-							<div class="panel">
-								<div class="panel-heading">
-									<h3 class="panel-title">My Tasks</h3>
-									<div class="right">
-										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
-										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
-									</div>
-								</div>
-								<div class="panel-body">
-									<ul class="list-unstyled task-list">
-										<li>
-											<p>Updating Users Settings <span class="label-percent">23%</span></p>
-											<div class="progress progress-xs">
-												<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="23" aria-valuemin="0" aria-valuemax="100" style="width:23%">
-													<span class="sr-only">23% Complete</span>
-												</div>
-											</div>
-										</li>
-										<li>
-											<p>Load &amp; Stress Test <span class="label-percent">80%</span></p>
-											<div class="progress progress-xs">
-												<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-													<span class="sr-only">80% Complete</span>
-												</div>
-											</div>
-										</li>
-										<li>
-											<p>Data Duplication Check <span class="label-percent">100%</span></p>
-											<div class="progress progress-xs">
-												<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
-													<span class="sr-only">Success</span>
-												</div>
-											</div>
-										</li>
-										<li>
-											<p>Server Check <span class="label-percent">45%</span></p>
-											<div class="progress progress-xs">
-												<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-													<span class="sr-only">45% Complete</span>
-												</div>
-											</div>
-										</li>
-										<li>
-											<p>Mobile App Development <span class="label-percent">10%</span></p>
-											<div class="progress progress-xs">
-												<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%">
-													<span class="sr-only">10% Complete</span>
-												</div>
-											</div>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<!-- END TASKS -->
-						</div>
-						<div class="col-md-4">
-							<!-- VISIT CHART -->
-							<div class="panel">
-								<div class="panel-heading">
-									<h3 class="panel-title">Website Visits</h3>
-									<div class="right">
-										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
-										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
-									</div>
-								</div>
-								<div class="panel-body">
-									<div id="visits-chart" class="ct-chart"></div>
-								</div>
-							</div>
-							<!-- END VISIT CHART -->
-						</div>
-						<div class="col-md-4">
-							<!-- REALTIME CHART -->
-							<div class="panel">
-								<div class="panel-heading">
-									<h3 class="panel-title">System Load</h3>
-									<div class="right">
-										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
-										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
-									</div>
-								</div>
-								<div class="panel-body">
-									<div id="system-load" class="easy-pie-chart" data-percent="70">
-										<span class="percent">70</span>
-									</div>
-									<h4>CPU Load</h4>
-									<ul class="list-unstyled list-justify">
-										<li>High: <span>95%</span></li>
-										<li>Average: <span>87%</span></li>
-										<li>Low: <span>20%</span></li>
-										<li>Threads: <span>996</span></li>
-										<li>Processes: <span>259</span></li>
-									</ul>
-								</div>
-							</div>
-							<!-- END REALTIME CHART -->
+							<button type="submit" class="btn btn-primary">Sign in</button>
+							</form>
+							
 						</div>
 					</div>
 				</div>
 			</div>
+			<?php mysqli_close($db);?>
 			<!-- END MAIN CONTENT -->
 		</div>
 		<!-- END MAIN -->
 		<div class="clearfix"></div>
 		<footer>
 			<div class="container-fluid">
-				<p class="copyright">&copy; 2017 <a href="https://www.themeineed.com" target="_blank">Theme I Need</a>. All Rights Reserved.</p>
+				<p class="copyright">&copy; 2019 Iván Quesada Palmero. All Rights Reserved.</p>
 			</div>
 		</footer>
 	</div>
