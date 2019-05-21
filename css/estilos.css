@@ -102,3 +102,16 @@
 .formulario{
   padding-left: 20%;
 }
+
+
+.color-grave{
+  color: red;
+}
+
+.color-medio{
+  color: orange;
+}
+
+.color-leve{
+  color: rgb(202, 202, 89);
+}

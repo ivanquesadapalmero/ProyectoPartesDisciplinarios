@@ -21,6 +21,32 @@
 	<!-- ICONS -->
 	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
+
+	<script>
+    function actualizaAlumnos(grupo) {
+        if (grupo == "") {
+            document.getElementById("alumnos").innerHTML = "";
+            document.getElementById("alumnos").disabled = true;
+            return;
+        } else {
+            if (window.XMLHttpRequest) {
+                // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("alumnos").innerHTML = this.responseText;
+                    document.getElementById("alumnos").disabled = false;
+                }
+            };
+            xmlhttp.open("GET","alumnoSelect.php?grupo="+grupo,true);
+            xmlhttp.send();
+        }
+    }
+    </script>
 </head>
 <body>
 <?php 
@@ -87,68 +113,64 @@
 							<div class="form-row">
 								<div class="form-group col-md-6">
 									<label for="curso">Curso</label>
-									<select id="curso" class="form-control">
+									<select id="curso" name="curso" class="form-control" onchange="actualizaAlumnos(this.value)" required>
 										<option selected></option>
 										<?php
-										$sql = "SELECT DISTINCT alum_grupo FROM alumnos";
+										$sql = "SELECT DISTINCT alum_grupo FROM alumnos ORDER BY alum_grupo ASC";
                                         
                                         $res = mysqli_query($db, $sql);
                                         
                                         while ($row = mysqli_fetch_array($res)) { 
-											print '<option>'.$row['alum_grupo'].'</option>';
+											print '<option value="' . $row['alum_grupo'] . '">'.$row['alum_grupo'].'</option>';
 										}
 
 										?>
-										<!-- rellenar con cursos de la base de datos !-->
 									</select>
 								</div>
 								<div class="form-group col-md-6">
-									<label for="curso">Alumno</label>
-									<select id="curso" class="form-control">
+									<label for="alumnos">Alumno</label>
+									<select id="alumnos" name="alumno" class="form-control" required>
 										<option selected></option>
-										<!-- rellenar con cursos de la base de datos !-->
 									</select>
 								</div>
 							</div>
 							<div class="form-row">
 								<div class="form-group col-md-12">
 									<label for="exampleFormControlTextarea1">Motivo u Obsevaciones</label>
-									<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+									<textarea name="observaciones" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 								</div>	
+							</div>
+							<div class="form-row">
+								<div class="form-group col-md-12">
+									<label>Nivel de Gravedad</label>
+								</div>
+								
 							</div>
 
 							<div class="form-row">
-							<div class="form-group col-md-6">
-								<label for="inputAddress2">Address 2</label>
-								<input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+								<div class="custom-control custom-radio custom-control-inline col-md-4">
+									<input type="radio" class="custom-control-input" id="defaultInline1" name="inlineDefaultRadiosExample" required>
+									<label class="custom-control-label color-leve" for="defaultInline1">Leve</label>
+								</div>
+								<div class="custom-control custom-radio custom-control-inline col-md-4">
+									<input type="radio" class="custom-control-input" id="defaultInline2" name="inlineDefaultRadiosExample">
+									<label class="custom-control-label color-medio" for="defaultInline2">Medio</label>
+								</div>
+								<div class="custom-control custom-radio custom-control-inline col-md-4">
+									<input type="radio" class="custom-control-input" id="defaultInline3" name="inlineDefaultRadiosExample">
+									<label class="custom-control-label color-grave" for="grave">Grave</label>
+								</div>
 							</div>
-							</div>
+							
 							<div class="form-row">
-								<div class="form-group col-md-6">
-								<label for="inputCity">City</label>
-								<input type="text" class="form-control" id="inputCity">
+								<div class="form-group col-md-4">
 								</div>
 								<div class="form-group col-md-4">
-								<label for="inputState">State</label>
-								<select id="inputState" class="form-control">
-									<option selected>Choose...</option>
-									<option>...</option>
-								</select>
+									<button type="submit" class="btn btn-primary">Registrar</button>
 								</div>
-								<div class="form-group col-md-2">
-								<label for="inputZip">Zip</label>
-								<input type="text" class="form-control" id="inputZip">
+								<div class="form-group col-md-4">
 								</div>
 							</div>
-							<div class="form-group">
-								<div class="form-check">
-								<input class="form-check-input" type="checkbox" id="gridCheck">
-								<label class="form-check-label" for="gridCheck">
-									Check me out
-								</label>
-								</div>
-							</div>
-							<button type="submit" class="btn btn-primary">Sign in</button>
 							</form>
 							
 						</div>
