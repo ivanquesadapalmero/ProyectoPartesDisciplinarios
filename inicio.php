@@ -7,11 +7,13 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<!-- VENDOR CSS -->
-	<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="vendor/linearicons/style.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
 	<!-- MAIN CSS -->
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/estilos.css">
+	<link rel="apple-touch-icon" sizes="76x76" href="images/logo.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="images/logo.png">
 
 	<script>
     function actualizaAlumnos(grupo) {
@@ -43,32 +45,101 @@
 <?php 
 
 	include('utilidades/session.php'); 
+
+	$id = $_GET['id'];
+
+	$registrado = "";
+	if(isset($_POST['registrar'])){
+
+		$profesor = $id;
+		$alumno = $_POST['alumno'];
+		$observaciones = $_POST['observaciones'];
+		$gravedad = $_POST['gravedad'];
+		$fecha = date('d/m/Y g:ia');
+		$grupo = $_POST['curso'];
+
+		$sql = "INSERT INTO partes (part_nivel, part_observaciones, part_alumno, part_profesor, fecha) VALUES('$gravedad','$observaciones','$alumno','$profesor','$fecha')";
+		  
+		if (mysqli_query($db, $sql)) {
+			$registrado = "Parte registrado correctamente";
+		} else {
+			echo "Error: " . $sql . "<br>" . mysqli_error($db);
+		}
+
+		$sql1 = "INSERT INTO alertas (grupo, alumno, profesor) VALUES('$grupo', '$alumno', '$profesor')";
+		mysqli_query($db, $sql1);
+		
+	}
+
+	$sql = "SELECT prof_grupo FROM profesores WHERE prof_id = $id";
+
+	$res = mysqli_query($db, $sql);
+                                        
+	while ($row = mysqli_fetch_array($res)) { 
+		$grupo = $row['prof_grupo'];
+	}
+
+	
+
+
 ?>
 
 	<!-- WRAPPER -->
 	<div id="wrapper">
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-default navbar-fixed-top">
-			<div class="brand">
-				<a href="inicio.html"><img src="images/logo-pagina.png" alt="Logo" class="img-responsive logo"></a>
-			</div>
+			
 			<div class="container-fluid">
+			<div class="brand">
+				<a href="<?php echo "inicio.php?id=".$id?>"><img src="images/logo-pagina.png" alt="Logo" class="img-responsive logo"></a>
+			</div>
 				<div class="navbar-btn">
 					<button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-menu"></i></button>
 				</div>
 				<div id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
+							<?php
+								$sql = "SELECT * FROM alertas WHERE grupo = '$grupo' AND profesor != $id";
+
+								$res = mysqli_query($db, $sql);
+								
+								$count = mysqli_num_rows($res);
+							?>
 							<a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown">
 								<i class="lnr lnr-alarm"></i>
-								<span class="badge bg-danger">1</span>
+								<span class="badge bg-danger"><?php if($count > 0){echo $count;} ?></span>
 							</a>
 							<ul class="dropdown-menu notifications">
-								<li><a href="#" class="notification-item"><span class="dot bg-danger"></span>Ivan Quesada Palmero ha recibido un parte</a></li>
+								<?php
+								if($count > 0){
+									while ($row = mysqli_fetch_array($res)) { 
+										
+										$sql1 = "SELECT alum_id, alum_nombre, alum_apellidos FROM alumnos WHERE alum_id = ".$row['alumno']."";
+										$res1 = mysqli_query($db, $sql1);
+										while ($row1 = mysqli_fetch_array($res1)){
+											print '<li><a href="perfil.php?idA='.$row1['alum_id'].'&id= '.$id.' " class="notification-item"><span class="dot bg-danger"></span>'.$row1['alum_nombre'].', '.$row1['alum_apellidos'].' ha recibido un parte</a></li>';
+										}
+									
+											
+										
+									}
+								}
+								?>
+								
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="images/avatar.png" class="img-circle" alt="Avatar"> <span>Usuario</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+						<?php
+							$sql = 'SELECT prof_nombre, prof_apellidos FROM profesores WHERE prof_id =' .$_GET['id'].'';
+                                        
+							$res = mysqli_query($db, $sql);
+							
+							while ($row = mysqli_fetch_array($res)) { 
+								$avatar = $row['prof_apellidos'].", ".$row['prof_nombre'];
+							}
+						?>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="images/avatar.png" class="img-circle" alt="Avatar"> <span><?php echo $avatar ?></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
 								<li><a href="utilidades/salir.php"><i class="lnr lnr-exit"></i> <span>Salir</span></a></li>
 							</ul>
@@ -83,9 +154,8 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li><a href="inicio.php" class="active"><i class="lnr lnr-home"></i> <span>Inicio</span></a></li>
-						<li><a href="tutoria.php" class=""><i class="lnr lnr-code"></i> <span>Mi Tutoria</span></a></li>
-						<li><a href="charts.html" class=""><i class="lnr lnr-chart-bars"></i> <span>Charts</span></a></li>
+						<li><a href="<?php echo "inicio.php?id=".$id?>" class="active"><i class="lnr lnr-home"></i> <span>Inicio</span></a></li>
+						<li><a href="<?php echo "tutoria.php?id=".$id?>"><i class="lnr lnr-users"></i> <span>Mi Tutoria</span></a></li>
 					</ul>
 				</nav>
 			</div>
@@ -100,7 +170,7 @@
 					<h3 class="page-title">Inicio-Registrar un parte</h3>
 					<div class="row">
 						<div class="col-md-10">
-						<form class="formulario">
+						<form class="formulario" method="POST" action="">
 							<div class="form-row">
 								<div class="form-group col-md-6">
 									<label for="curso">Curso</label>
@@ -140,15 +210,15 @@
 
 							<div class="form-row">
 								<div class="custom-control custom-radio custom-control-inline col-md-4">
-									<input type="radio" class="custom-control-input" id="defaultInline1" name="inlineDefaultRadiosExample" required>
+									<input type="radio" class="custom-control-input" value="leve" id="defaultInline1" name="gravedad" required>
 									<label class="custom-control-label color-leve" for="defaultInline1">Leve</label>
 								</div>
 								<div class="custom-control custom-radio custom-control-inline col-md-4">
-									<input type="radio" class="custom-control-input" id="defaultInline2" name="inlineDefaultRadiosExample">
+									<input type="radio" class="custom-control-input" value="medio" id="defaultInline2" name="gravedad">
 									<label class="custom-control-label color-medio" for="defaultInline2">Medio</label>
 								</div>
 								<div class="custom-control custom-radio custom-control-inline col-md-4">
-									<input type="radio" class="custom-control-input" id="defaultInline3" name="inlineDefaultRadiosExample">
+									<input type="radio" class="custom-control-input" value="grave" id="defaultInline3" name="gravedad">
 									<label class="custom-control-label color-grave" for="grave">Grave</label>
 								</div>
 							</div>
@@ -157,15 +227,18 @@
 								<div class="form-group col-md-4">
 								</div>
 								<div class="form-group col-md-4">
-									<button type="submit" class="btn btn-primary">Registrar</button>
+									<button type="submit" name="registrar" class="btn btn-primary">Registrar</button>
 								</div>
 								<div class="form-group col-md-4">
 								</div>
 							</div>
 							</form>
+						
 							
 						</div>
+						
 					</div>
+					<p style="color:green"><?php echo $registrado?></p>
 				</div>
 			</div>
 			<?php mysqli_close($db);?>
@@ -181,11 +254,11 @@
 	</div>
 	<!-- END WRAPPER -->
 	<!-- Javascript -->
-	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-	<script src="vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
-	<script src="vendor/chartist/js/chartist.min.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.slimscroll.min.js"></script>
+	<script src="js/jquery.easypiechart.min.js"></script>
+	<script src="js/chartist.min.js"></script>
 	<script src="js/klorofil-common.js"></script>
 	
 </body>

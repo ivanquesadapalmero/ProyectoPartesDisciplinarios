@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>DisciPart-Login</title>
     <link rel="stylesheet" href="css/all.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.login.css">
     <link rel="stylesheet" href="css/estilos.css">
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/jquery.min.js"></script>
+    <link rel="apple-touch-icon" sizes="76x76" href="images/logo.png">
+	  <link rel="icon" type="image/png" sizes="96x96" href="images/logo.png">
  
 </head>
 
@@ -26,15 +28,14 @@
      $sql = "SELECT id FROM credenciales WHERE usuario = '$myusername' and contraseña = '$mypassword'";
      $result = mysqli_query($db,$sql);
      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-     //$active = $row['active'];
-     
+     $id = $row['id'];
      $count = mysqli_num_rows($result);
      
      if($count == 1) {
         //session_register("myusername");
         $_SESSION['login_user'] = $myusername;
         
-        header("location: inicio.php");
+        header("location: inicio.php?id=".$id."");
         $error = "";
      }else {
         $error = "Usuario o contraseña incorrecto";

@@ -115,3 +115,26 @@
 .color-leve{
   color: rgb(202, 202, 89);
 }
+.respon{
+  overflow: auto;
+}
+
+.fotoPerfil{
+  width: 30%;
+  height: 20%;
+  border: solid 1px;
+}
+
+.botonEliminar{
+  color:red;
+  border-color: red;
+}
+
+.imagenPerfil{
+  
+  width: 100%;
+}
+
+.logo{
+  display: block;
+}
