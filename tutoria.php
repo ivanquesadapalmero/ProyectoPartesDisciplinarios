@@ -8,8 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<!-- VENDOR CSS -->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
-	
-	<link rel="stylesheet" href="css/style.css">
+
 	
 	<!-- MAIN CSS -->
 	<link rel="stylesheet" href="css/main.css">
@@ -195,11 +194,11 @@
 	</div>
 	<!-- END WRAPPER -->
 	<!-- Javascript -->
-	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-	<script src="vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
-	<script src="vendor/chartist/js/chartist.min.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.slimscroll.min.js"></script>
+	<script src="js/jquery.easypiechart.min.js"></script>
+	<script src="js/chartist.min.js"></script>
 	<script src="js/klorofil-common.js"></script>
 	<script>
 	$(function() {
