@@ -7,7 +7,7 @@
     <title>DisciPart-Login</title>
     <link rel="stylesheet" href="css/all.css">
     <link rel="stylesheet" href="css/bootstrap.min.login.css">
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/estilos.login.css">
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/jquery.min.js"></script>
     <link rel="apple-touch-icon" sizes="76x76" href="images/logo.png">
