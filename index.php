@@ -13,6 +13,22 @@
     <link rel="apple-touch-icon" sizes="76x76" href="images/logo.png">
 	  <link rel="icon" type="image/png" sizes="96x96" href="images/logo.png">
 	<link rel="manifest" href="/manifest.json" />
+	<script>
+	if ("serviceWorker" in navigator) {
+  if (navigator.serviceWorker.controller) {
+    console.log("[PWA Builder] active service worker found, no need to register");
+  } else {
+    // Register the service worker
+    navigator.serviceWorker
+      .register("js/service-worker.js", {
+        scope: "./"
+      })
+      .then(function (reg) {
+        console.log("[PWA Builder] Service worker has been registered for scope: " + reg.scope);
+      });
+  }
+}
+		<script>
  
 </head>
 
@@ -72,5 +88,5 @@
         </div>
       </div>
     </div>
-	<script src="js/service-worker.js"></script>
+	
 </body>
