@@ -5,5 +5,5 @@ Tecnología: Backend(php), Persistencia de datos(mysql) y Frontend(html, css, js
 
 Autor: Iván Quesada Palmero.
 
-[I'm an inline-style link](discipart.herokuapp.com)
+[discipart.herokuapp.com](discipart.herokuapp.com)
 
