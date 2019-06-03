@@ -12,24 +12,7 @@
     <script src="js/jquery.min.js"></script>
     <link rel="apple-touch-icon" sizes="76x76" href="images/logo.png">
 	  <link rel="icon" type="image/png" sizes="96x96" href="images/logo.png">
-	<link rel="manifest" href="/manifest.json" />
-	<script>
-	if ("serviceWorker" in navigator) {
-  if (navigator.serviceWorker.controller) {
-    console.log("[PWA Builder] active service worker found, no need to register");
-  } else {
-    // Register the service worker
-    navigator.serviceWorker
-      .register("js/service-worker.js", {
-        scope: "./"
-      })
-      .then(function (reg) {
-        console.log("[PWA Builder] Service worker has been registered for scope: " + reg.scope);
-      });
-  }
-}
-		</script>
- 
+	  <link rel="manifest" href="/manifest.json" />
 </head>
 
 <body>
@@ -52,6 +35,14 @@
         //session_register("myusername");
         $_SESSION['login_user'] = $myusername;
         
+        if($_POST['recordar']){
+          setcookie('recordar_usuario', $_POST['usuario']);
+        }
+
+        if($_POST['recordar']){
+          setcookie('recordar_contraseña', $_POST['contraseña']);
+        }
+
         header("location: inicio.php?id=".$id."");
         $error = "";
      }else {
@@ -67,18 +58,18 @@
               <h5 class="card-title text-center"><img src="images/logo.png" alt="logo"></h5>
               <form class="form-signin" method="post">
                 <div class="form-label-group">
-                  <input type="text" id="inputUsuario" name="usuario" class="form-control" placeholder="usuario" required autofocus>
+                  <input type="text" id="inputUsuario" name="usuario" class="form-control" placeholder="usuario" value="<?php echo $_COOKIE['recordar_usuario'] ?>" required autofocus>
                   <label for="inputUsuario">Usuario</label>
                 </div>
   
                 <div class="form-label-group">
-                  <input type="password" id="inputContraseña" name="contraseña" class="form-control" placeholder="Contraseña" required>
+                  <input type="password" id="inputContraseña" name="contraseña" class="form-control" placeholder="Contraseña" value="<?php echo $_COOKIE['recordar_contraseña'] ?>" required>
                   <label for="inputContraseña">Contraseña</label>
                 </div>
   
                 <div class="custom-control custom-checkbox mb-3">
-                  <input type="checkbox" class="custom-control-input" id="customCheck1">
-                  <label class="custom-control-label" for="customCheck1">Recordar Contraseña</label>
+                  <input type="checkbox" name="recordar" id="recordar" value="1" <?php if(isset($_COOKIE['recordar_usuario'])){echo 'checked';}?>>
+                  <label for="customCheck1">Recordar Contraseña</label>
                 </div>
                 <p style = color:red><?php echo $error ?></p>
                 <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Acceder</button>
@@ -88,5 +79,7 @@
         </div>
       </div>
     </div>
+
+    <script src="service-worker.js"></script>
 	
 </body>
