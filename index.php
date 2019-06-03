@@ -12,6 +12,7 @@
     <script src="js/jquery.min.js"></script>
     <link rel="apple-touch-icon" sizes="76x76" href="images/logo.png">
 	  <link rel="icon" type="image/png" sizes="96x96" href="images/logo.png">
+	<link rel="manifest" href="/manifest.json" />
  
 </head>
 
@@ -71,4 +72,5 @@
         </div>
       </div>
     </div>
+	<script src="js/service-worker.js"></script>
 </body>
