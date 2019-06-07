@@ -1,49 +1,49 @@
 {
-    "name": "DisciPart",
-    "short_name": "DisciPart",
+    "name": "DisciPart-Mobile",
+    "short_name": "DisciPart-Mobile",
     "theme_color": "#0055ff",
     "background_color": "#0055ff",
     "display": "standalone",
-    "Scope": "/",
+    "scope": "/",
     "start_url": "/",
     "icons": [
       {
-        "src": "images/logo.png",
+        "src": "images/logo-mobile.png",
         "sizes": "82x82",
         "type": "image/png"
       },
       {
-        "src": "images/logo.png",
+        "src": "images/logo-mobile.png",
         "sizes": "96x96",
         "type": "image/png"
       },
       {
-        "src": "images/logo.png",
+        "src": "images/logo-mobile.png",
         "sizes": "128x128",
         "type": "image/png"
       },
       {
-        "src": "images/logo.png",
+        "src": "images/logo-mobile.png",
         "sizes": "144x144",
         "type": "image/png"
       },
       {
-        "src": "images/logo.png",
+        "src": "images/logo-mobile.png",
         "sizes": "152x152",
         "type": "image/png"
       },
       {
-        "src": "images/logo.png",
+        "src": "images/logo-mobile.png",
         "sizes": "192x192",
         "type": "image/png"
       },
       {
-        "src": "images/logo.png",
+        "src": "images/logo-mobile.png",
         "sizes": "384x384",
         "type": "image/png"
       },
       {
-        "src": "images/logo.png",
+        "src": "images/logo-mobile.png",
         "sizes": "512x512",
         "type": "image/png"
       }

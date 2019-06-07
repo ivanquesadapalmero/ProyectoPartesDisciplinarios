@@ -3,14 +3,13 @@
 
 
 // Nombre de la caché
-const CACHE_NAME = 'DisciPart';
+const CACHE_NAME = 'DisciPart-Mobile';
 
 // Archivos necesarios para el funcionamiento offline
 const CACHE_ASSETS = [
   '/',
-  '/index.html',
-  '/style.css',
-  '/app.js'
+  '/index.php',
+  'css/style.css',
 ];
 
 // INSTALL
