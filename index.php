@@ -12,20 +12,6 @@
     <link rel="apple-touch-icon" sizes="76x76" href="images/logo.png">
 	  <link rel="icon" type="image/png" sizes="96x96" href="images/logo.png">
 	  <link rel="manifest" href="manifest.json" />
-
-    <script>
-            if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('js/service-worker.js').then(function(registration) {
-            // Registration was successful
-            console.log('ServiceWorker registration successful with scope: ', registration.scope);
-          }).catch(function(err) {
-            // registration failed :(
-            console.log('ServiceWorker registration failed: ', err);
-          });
-        });
-      }
-    </script>
 </head>
 
 <body>
@@ -93,6 +79,19 @@
       </div>
     </div>
 
-    <script src="js/service-worker.js"></script>
-	
+    <script>
+        // Si está soportado serviceWorker por el navegador
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker
+                    .register('./service-worker.js')
+                    .then(reg => console.log('[Service Worker] * Registrado.'))
+                    .catch(err => console.log(`[Service Worker] * Error: ${err}`));
+            });
+        }
+
+        
+    </script>
+    <script src="service-worker.js"></script>
+
 </body>
