@@ -14,7 +14,15 @@
 	<link rel="stylesheet" href="css/estilos.css">
 	<link rel="apple-touch-icon" sizes="76x76" href="images/logo.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="images/logo.png">
-
+	<style>
+	
+	.frmSearch {margin: 1px 0px;padding:40px;border-radius:4px;}
+	#country-list{float:left;list-style:none;margin-top:-3px;padding:0;width:190px;position: absolute;}
+	#country-list li{padding: 10px; background: #f0f0f0; border-bottom: #bbb9b9 1px solid;}
+	#country-list li:hover{background:#ece3d2;cursor: pointer;}
+	#search-box{padding: 10px;border: #a8d4b1 1px solid;border-radius:4px;}
+	</style>
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
 	<script>
     function actualizaAlumnos(grupo) {
         if (grupo == "") {
@@ -39,6 +47,24 @@
             xmlhttp.send();
         }
     }
+	<?php print 'var profesor='.$_GET['id'].';' ?>
+	$(document).ready(function(){
+		$("#search-box").keyup(function(){
+			$.ajax({
+			type: "POST",
+			url: "readAlumno.php?profesor="+profesor,
+			data:'keyword='+$(this).val(),
+			beforeSend: function(){
+				$("#search-box").css("background","#FFF url(images/LoaderIcon.gif) no-repeat 165px");
+			},
+			success: function(data){
+				$("#suggesstion-box").show();
+				$("#suggesstion-box").html(data);
+				$("#search-box").css("background","#FFF");
+			}
+			});
+		});
+	});
     </script>
 </head>
 <body>
@@ -156,6 +182,12 @@
 					<ul class="nav">
 						<li><a href="<?php echo "inicio.php?id=".$id?>" class="active"><i class="lnr lnr-home"></i> <span>Inicio</span></a></li>
 						<li><a href="<?php echo "tutoria.php?id=".$id?>"><i class="lnr lnr-users"></i> <span>Mi Tutoria</span></a></li>
+						<li>
+							<div class="frmSearch">
+								<input type="text" id="search-box" placeholder="Buscar Alumno" />
+								<div id="suggesstion-box"></div>
+							</div>
+						</li>
 					</ul>
 				</nav>
 			</div>
