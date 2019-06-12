@@ -233,15 +233,11 @@
 							</div>
 
 							<div class="form-row">
-								<div class="custom-control custom-radio custom-control-inline col-md-4">
+								<div class="custom-control custom-radio custom-control-inline col-md-6">
 									<input type="radio" class="custom-control-input" value="leve" id="defaultInline1" name="gravedad" required>
-									<label class="custom-control-label color-leve" for="defaultInline1">Leve</label>
+									<label class="custom-control-label color-medio" for="defaultInline1">Leve</label>
 								</div>
-								<div class="custom-control custom-radio custom-control-inline col-md-4">
-									<input type="radio" class="custom-control-input" value="medio" id="defaultInline2" name="gravedad">
-									<label class="custom-control-label color-medio" for="defaultInline2">Medio</label>
-								</div>
-								<div class="custom-control custom-radio custom-control-inline col-md-4">
+								<div class="custom-control custom-radio custom-control-inline col-md-6">
 									<input type="radio" class="custom-control-input" value="grave" id="defaultInline3" name="gravedad">
 									<label class="custom-control-label color-grave" for="grave">Grave</label>
 								</div>
